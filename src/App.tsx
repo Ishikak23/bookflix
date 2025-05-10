@@ -1,13 +1,14 @@
-import React from 'react'
-import './App.css'
+import React from "react";
+
+import "./App.css";
+import MainRoutes from "./Pages/MainRoutes";
 
 function App() {
-
   return (
-    <>
-     <div className='text-red-500'>Books</div>
-    </>
-  )
+    <div>
+      <MainRoutes />
+    </div>
+  );
 }
 
-export default App
+export default App;
