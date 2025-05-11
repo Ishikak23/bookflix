@@ -16,7 +16,7 @@ const MainRoutes = () => {
       element: <LoginPage />,
     },
     {
-      path: "home",
+      path: "/home",
       element: <Dashboard />,
     },
   ]);

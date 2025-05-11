@@ -2,11 +2,14 @@ import React from "react";
 
 import "./App.css";
 import MainRoutes from "./Pages/MainRoutes";
+import { UserProvider } from "./utils/userContext";
 
 function App() {
   return (
     <div>
-      <MainRoutes />
+      <UserProvider>
+        <MainRoutes />
+      </UserProvider>
     </div>
   );
 }

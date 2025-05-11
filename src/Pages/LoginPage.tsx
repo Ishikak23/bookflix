@@ -4,26 +4,45 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   updateProfile,
+  User,
 } from "firebase/auth";
 
 import BookBackground from "../assets/books-bg.png";
 import { auth } from "../utils/firebaseConfig";
+import { useNavigate } from "react-router-dom";
+import { useUserContext } from "../utils/userContext";
 
 const LoginPage: React.FC = () => {
   const [isLogin, setIsLogin] = useState(true);
   const nameRef = useRef<HTMLInputElement>(null);
   const emailRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
+  const { setLoggedInUser } = useUserContext() || {};
+  const navigate = useNavigate();
 
   const handleLoginToggle = () => {
     setIsLogin(!isLogin);
   };
 
+  const clearInput = () => {
+    if (nameRef.current) {
+      nameRef.current.value = "";
+    }
+    if (emailRef.current) {
+      emailRef.current.value = "";
+    }
+    if (passwordRef.current) {
+      passwordRef.current.value = "";
+    }
+  };
   const createNewUser = (email: string, password: string) => {
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        const user = userCredential.user;
-        console.log("logged in user", user);
+        const user: User = userCredential.user;
+        setLoggedInUser?.(user);
+        clearInput();
+        setIsLogin(true);
+        navigate("/login");
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -39,6 +58,7 @@ const LoginPage: React.FC = () => {
         updateProfile(user, {
           displayName: nameRef?.current?.value,
         });
+        navigate("/home");
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -109,6 +129,7 @@ const LoginPage: React.FC = () => {
             <button
               className="bg-amber-800 text-amber-50 ml-auto mr-auto rounded-xl w-fit py-1 px-2.5 mt-2 cursor-pointer"
               onClick={handleUserAuth}
+              type={"button"}
             >
               {isLogin ? "Login" : "Sign Up"}
             </button>
