@@ -19,7 +19,7 @@ const Header: React.FC = () => {
       });
   };
   return (
-    <div className="flex flex-row justify-between bg-[#fdf6e3] shadow-lg p-4 box-border items-center">
+    <div className="sticky top-0 flex flex-row justify-between backdrop-blur bg-[#fdf6e3] shadow-lg p-4 box-border items-center">
       <h2 className="font-bold text-amber-900 text-2xl">Bookshelf</h2>
       <div className="flex flex-row gap-2">
         <button
