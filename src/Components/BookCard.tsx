@@ -6,7 +6,7 @@ interface BookCardInterface {
   author: string;
   cover_id: number;
 }
-const BookCard = (props: BookCardInterface) => {
+const BookCard: React.FC<BookCardInterface> = (props: BookCardInterface) => {
   const { title, author, cover_id } = props;
   const coverImg = cover_id
     ? `https://covers.openlibrary.org/b/id/${cover_id}-M.jpg`

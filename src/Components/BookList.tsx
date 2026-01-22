@@ -13,7 +13,7 @@ export interface BookListInterface {
   genre: string;
 }
 
-const BookList = (props: BookListInterface) => {
+const BookList: React.FC<BookListInterface> = (props: BookListInterface) => {
   const { genre } = props;
   const [bookListData, setBookListData] = useState<BookInterface[]>([]);
   const [clientWidth, setClientWidth] = useState<number>(0);
@@ -42,7 +42,7 @@ const BookList = (props: BookListInterface) => {
     }
   }, [bookListData]);
 
-  const handleScroll = (event: React.UIEvent<HTMLDivElement>) => {
+  const handleScroll = () => {
     let scrollLeft;
     if (bookListRef.current) {
       scrollLeft = bookListRef.current.scrollLeft;

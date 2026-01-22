@@ -4,7 +4,7 @@ export interface AvatarProps {
   name: string | null | undefined;
 }
 
-const Avatar = (props: AvatarProps) => {
+const Avatar: React.FC<AvatarProps> = (props: AvatarProps) => {
   const { name } = props;
   const getInitial = () => {
     const arr = name?.split(" ");

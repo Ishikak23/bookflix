@@ -4,7 +4,7 @@ import "./App.css";
 import MainRoutes from "./Pages/MainRoutes";
 import { UserProvider } from "./utils/userContext";
 
-function App() {
+const App: React.FC = () => {
   return (
     <div>
       <UserProvider>
@@ -12,6 +12,6 @@ function App() {
       </UserProvider>
     </div>
   );
-}
+};
 
 export default App;

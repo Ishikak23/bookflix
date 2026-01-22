@@ -5,7 +5,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import LoginPage from "./LoginPage";
 import Dashboard from "./Dashboard";
 
-const MainRoutes = () => {
+const MainRoutes: React.FC = () => {
   const appRouter = createBrowserRouter([
     {
       path: "/",
