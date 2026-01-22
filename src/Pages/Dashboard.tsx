@@ -26,7 +26,7 @@ const Dashboard: React.FC = () => {
   return (
     <div>
       <Header />
-      <div className="flex flex-col gap-2 p-4">
+      <div className="flex flex-col gap-2 p-6">
         <h2 className="font-bold text-2xl text-amber-800">Best-seller</h2>
         <BookList genre="bestsellers" />
         <h2 className="font-bold text-2xl text-amber-800">Romance</h2>

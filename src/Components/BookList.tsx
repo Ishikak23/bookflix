@@ -65,7 +65,7 @@ const BookList = (props: BookListInterface) => {
   return (
     <div
       ref={bookListRef}
-      className="flex flex-row gap-2 overflow-x-auto"
+      className="flex flex-row gap-5 overflow-x-auto p-3"
       onScroll={handleScroll}
     >
       {showLeftArrow && (

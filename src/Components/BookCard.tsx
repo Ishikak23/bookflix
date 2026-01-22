@@ -13,7 +13,7 @@ const BookCard = (props: BookCardInterface) => {
     : PlaceHolderImg;
 
   return (
-    <div className="w-48 h-60 border-2 border-amber-700 rounded-xl p-2 flex-shrink-0 overflow-y-hidden">
+    <div className="bg-[#fdf6e3] w-48 h-60 shadow-lg shadow-[#fdf6e3]/30 rounded-xl p-2 flex-shrink-0 overflow-y-hidden">
       <img src={coverImg} alt="book-img" className="w-44 h-40" />
       <h3 className="p-1 text-base text-amber-900 font-bold whitespace-nowrap overflow-hidden text-ellipsis">
         {title}
