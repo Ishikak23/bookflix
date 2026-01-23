@@ -1,5 +1,5 @@
 import { onAuthStateChanged } from "firebase/auth";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { auth } from "../utils/firebaseConfig";
 import { useNavigate } from "react-router-dom";
 import { useUserContext } from "../utils/userContext";
@@ -10,6 +10,8 @@ import HeroSection from "../Components/HeroSection";
 const Dashboard: React.FC = () => {
   const navigate = useNavigate();
   const { setLoggedInUser } = useUserContext() || {};
+  const [scrollToBestSeller, setScrollToBestSeller] = useState<boolean>(false);
+  const [scrollToFirstGenre, setScrollToFirstGenre] = useState<boolean>(false);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
@@ -27,8 +29,16 @@ const Dashboard: React.FC = () => {
   return (
     <div>
       <Header />
-      <HeroSection />
-      <ContentSection />
+      <HeroSection
+        handleScrollToBestSeller={() => setScrollToBestSeller(true)}
+        handleScrollToFirstGenre={() => setScrollToFirstGenre(true)}
+      />
+      <ContentSection
+        scrollToBestSeller={scrollToBestSeller}
+        scrollToFirstGenre={scrollToFirstGenre}
+        setScrollToBestSeller={setScrollToBestSeller}
+        setScrollToFirstGenre={setScrollToBestSeller}
+      />
     </div>
   );
 };

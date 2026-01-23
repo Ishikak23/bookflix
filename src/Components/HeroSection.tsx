@@ -2,7 +2,13 @@ import React from "react";
 
 import HeroSectionImg from "../assets/hero-section.webp";
 
-const HeroSection: React.FC = () => {
+interface HeroSectionProps {
+  handleScrollToBestSeller: () => void;
+  handleScrollToFirstGenre: () => void;
+}
+
+const HeroSection: React.FC<HeroSectionProps> = (props: HeroSectionProps) => {
+  const { handleScrollToBestSeller, handleScrollToFirstGenre } = props;
   return (
     <div className="relative h-[60vh] w-full">
       <img
@@ -12,7 +18,7 @@ const HeroSection: React.FC = () => {
       />
       <div className="inset-0 absolute bg-black/50" />
       <div className="relative z-10 flex flex-col justify-end h-full p-10 text-white max-w-2xl">
-        <h1 className="text-4xl md:text-5xl font-bold leading-tight">
+        <h1 className="text-4xl md:text-5xl font-bold">
           Find your next
           <br /> favorite story
         </h1>
@@ -22,11 +28,17 @@ const HeroSection: React.FC = () => {
         </p>
 
         <div className="mt-6 flex gap-4">
-          <button className="px-6 py-3 bg-white text-amber-900 rounded-xl font-semibold shadow-lg hover:scale-105 transition">
+          <button
+            onClick={handleScrollToBestSeller}
+            className="px-6 py-3 bg-white text-amber-900 rounded-xl font-semibold shadow-lg hover:scale-105 transition cursor-pointer"
+          >
             Start Reading
           </button>
 
-          <button className="px-6 py-3 border border-white/70 rounded-xl hover:bg-white/10 transition">
+          <button
+            onClick={handleScrollToFirstGenre}
+            className="px-6 py-3 border border-white/70 rounded-xl hover:bg-white/10 transition cursor-pointer"
+          >
             Explore Genres
           </button>
         </div>
